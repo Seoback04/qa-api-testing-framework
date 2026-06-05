@@ -35,6 +35,7 @@ jobs:
 
       - name: Run tests
         run: |
+          mkdir -p reports
           pytest -v --junitxml=reports/junit.xml
 
       - name: Upload test report artifact
@@ -43,3 +44,4 @@ jobs:
         with:
           name: junit-report-py${{ matrix.python-version }}
           path: reports/junit.xml
+          if-no-files-found: warn
